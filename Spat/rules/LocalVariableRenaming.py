@@ -47,19 +47,19 @@ class LocalVariableRenaming(ast.NodeTransformer):
         return new_name
 
 
-def rename_local_variables(code):
+def LocalVarRenaming(code):
     tree = ast.parse(code)
     transformer = LocalVariableRenaming()
     new_tree = transformer.visit(tree)
     return ast.unparse(new_tree)
 
 
-# 示例使用
-code = """
-def example_function(x):
-    y = x + 1
-    return y
-x = 1
-"""
-new_code = rename_local_variables(code)
-print(new_code)
+# # 示例使用
+# code = """
+# def example_function(x):
+#     y = x + 1
+#     return y
+# x = 1
+# """
+# new_code = LocalVarRenaming(code)
+# print(new_code)

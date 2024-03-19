@@ -20,17 +20,17 @@ class SwitchStringMethodCallsTransformer(ast.NodeTransformer):
                     return ast.copy_location(new_call, node)
         return node
 
-def transform_switch_string_method_calls(source_code):
+def SwitchStringEqual(source_code):
     tree = ast.parse(source_code)
     transformer = SwitchStringMethodCallsTransformer()
     transformed_tree = transformer.visit(tree)
     return ast.unparse(transformed_tree)
 
-# 测试代码
-test_code = """
-result = "hello world".find("world")
-"""
-
-transformed_code = transform_switch_string_method_calls(test_code)
-print("原始代码:\n", test_code)
-print("转换后的代码:\n", transformed_code)
+# # 测试代码
+# test_code = """
+# result = "hello world".find("world")
+# """
+#
+# transformed_code = SwitchStringEqual(test_code)
+# print("原始代码:\n", test_code)
+# print("转换后的代码:\n", transformed_code)

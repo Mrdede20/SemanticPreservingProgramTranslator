@@ -20,19 +20,19 @@ class SwitchEqualSidesTransformer(ast.NodeTransformer):
         return node
 
 
-def transform_switch_equal_sides(source_code):
+def SwitchEqualSides(source_code):
     tree = ast.parse(source_code)
     transformer = SwitchEqualSidesTransformer()
     transformed_tree = transformer.visit(tree)
     return ast.unparse(transformed_tree)
 
 
-# 测试代码
-test_code = """
-if a == b:
-    print("a equals b")
-"""
-
-transformed_code = transform_switch_equal_sides(test_code)
-print("原始代码:\n", test_code)
-print("转换后的代码:\n", transformed_code)
+# # 测试代码
+# test_code = """
+# if a == b:
+#     print("a equals b")
+# """
+#
+# transformed_code = SwitchEqualSides(test_code)
+# print("原始代码:\n", test_code)
+# print("转换后的代码:\n", transformed_code)

@@ -21,21 +21,21 @@ class LoopIfContinue2ElseTransformer(ast.NodeTransformer):
         return node
 
 
-def transform_if_continue_to_else(source_code):
+def LoopIfContinue2Else(source_code):
     tree = ast.parse(source_code)
     transformer = LoopIfContinue2ElseTransformer()
     transformed_tree = transformer.visit(tree)
     return ast.unparse(transformed_tree)
 
 
-# 测试代码
-test_code = """
-for i in range(10):
-    if i % 2 == 0:
-        continue
-    print(i)
-"""
-
-transformed_code = transform_if_continue_to_else(test_code)
-print("原始代码:\n", test_code)
-print("转换后的代码:\n", transformed_code)
+# # 测试代码
+# test_code = """
+# for i in range(10):
+#     if i % 2 == 0:
+#         continue
+#     print(i)
+# """
+#
+# transformed_code = LoopIfContinue2Else(test_code)
+# print("原始代码:\n", test_code)
+# print("转换后的代码:\n", transformed_code)

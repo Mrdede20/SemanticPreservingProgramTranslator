@@ -31,20 +31,20 @@ class StatementsOrderRearrangementTransformer(ast.NodeTransformer):
 
         return node
 
-def transform_statements_order(source_code):
+def StatementsOrderRearrangement(source_code):
     tree = ast.parse(source_code)
     transformer = StatementsOrderRearrangementTransformer()
     transformed_tree = transformer.visit(tree)
     return ast.unparse(transformed_tree)
 
-# 测试代码
-test_code = """
-def example():
-    a = 1
-    b = 2
-    return a + b
-"""
-
-transformed_code = transform_statements_order(test_code)
-print("原始代码:\n", test_code)
-print("转换后的代码:\n", transformed_code)
+# # 测试代码
+# test_code = """
+# def example():
+#     a = 1
+#     b = 2
+#     return a + b
+# """
+#
+# transformed_code = StatementsOrderRearrangement(test_code)
+# print("原始代码:\n", test_code)
+# print("转换后的代码:\n", transformed_code)

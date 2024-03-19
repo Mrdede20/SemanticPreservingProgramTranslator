@@ -12,25 +12,25 @@ class PostfixSimulationToAugAssignTransformer(ast.NodeTransformer):
                 return ast.copy_location(ast.AugAssign(target=node.args[0], op=ast.Sub(), value=ast.Num(1)), node)
         return node
 
-def transform_postfix_simulation_to_augassign(source_code):
+def PP2AddAssignment(source_code):
     tree = ast.parse(source_code)
     transformer = PostfixSimulationToAugAssignTransformer()
     transformed_tree = transformer.visit(tree)
     return ast.unparse(transformed_tree)
 
-# 模拟的测试代码
-test_code = """
-def incr(x):
-    return x + 1
-
-def decr(x):
-    return x - 1
-
-x = 0
-incr(x)
-decr(x)
-"""
-
-transformed_code = transform_postfix_simulation_to_augassign(test_code)
-print("原始代码:\n", test_code)
-print("转换后的代码:\n", transformed_code)
+# # 模拟的测试代码
+# test_code = """
+# def incr(x):
+#     return x + 1
+#
+# def decr(x):
+#     return x - 1
+#
+# x = 0
+# incr(x)
+# decr(x)
+# """
+#
+# transformed_code = PP2AddAssignment(test_code)
+# print("原始代码:\n", test_code)
+# print("转换后的代码:\n", transformed_code)

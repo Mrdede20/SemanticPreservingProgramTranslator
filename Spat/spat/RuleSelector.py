@@ -1,8 +1,26 @@
-import ast
-
-
-# 导入所有规则的模块（后续需要创建）
-from ..rules import *
+# 导入所有规则
+from Spat.rules.LocalVariableRenaming import LocalVarRenaming
+from Spat.rules.LocalVariableRenaming_Wrongly import LocalVarRenaming_Wrongly
+from Spat.rules.ChangeFor2While import For2While
+from Spat.rules.ChangeFor2While_Wrongly import For2While_Wrongly
+from Spat.rules.ChangeWhile2For import While2For
+from Spat.rules.ReveseIf_Else import ReverseIfElse
+from Spat.rules.ReveseIf_Else2_Wrongly import ReverseIfElse_Wrongly
+from Spat.rules.SingleIf2ConditionalExp import SingleIF2ConditionalExp
+from Spat.rules.ConditionalExp2SingleIF import ConditionalExp2SingleIF
+from Spat.rules.PP2AddAssignment import PP2AddAssignment
+from Spat.rules.AddAssignemnt2EqualAssignment import AddAssignment2EqualAssignment
+from Spat.rules.InfixExpressionDividing import InfixExpressionDividing
+from Spat.rules.If_Dividing import IfDividing
+from Spat.rules.StatementsOrderRearrangement import StatementsOrderRearrangement
+from Spat.rules.StatementsOrderRearrangement_Wrongly import StatementsOrderRearrangement_Wrongly
+from Spat.rules.LoopIfContinue2Else import LoopIfContinue2Else
+from Spat.rules.VarDeclarationMerging import VarDeclarationMerging
+from Spat.rules.VarDeclarationDividing import VarDeclarationDividing
+from Spat.rules.SwitchEqualSides import SwitchEqualSides
+from Spat.rules.SwitchStringEqual import SwitchStringEqual
+from Spat.rules.PrePostFixExpressionDividing import PrePostFixExpressionDividing
+from Spat.rules.Case2IfElse import Case2IfElse
 
 class RuleSelector:
     # 定义所有可能的规则
@@ -32,17 +50,51 @@ class RuleSelector:
     }
 
     @staticmethod
-    def create(rule_id: str, tree: ast.AST, output_dir: str):
-        # 将Java中的switch-case逻辑转换为Python中的if-elif-else
+    def create(source_code: str, rule_id: str):
         if rule_id == "0":
-            return rename_local_variables(tree, output_dir)
+            return LocalVarRenaming(source_code)
         elif rule_id == "1":
-            return For2While(tree, output_dir)
+            return For2While(source_code)
         elif rule_id == "2":
-            return While2For(tree, output_dir)
+            return While2For(source_code)
         elif rule_id == "3":
-            return ReverseIfElse(tree, output_dir)
-        # 添加更多规则匹配...
+            return ReverseIfElse(source_code)
+        elif rule_id == "4":
+            return SingleIF2ConditionalExp(source_code)
+        elif rule_id == "5":
+            return ConditionalExp2SingleIF(source_code)
+        elif rule_id == "6":
+            return PP2AddAssignment(source_code)
+        elif rule_id == "7":
+            return AddAssignment2EqualAssignment(source_code)
+        elif rule_id == "8":
+            return InfixExpressionDividing(source_code)
+        elif rule_id == "9":
+            return IfDividing(source_code)
+        elif rule_id == "10":
+            return StatementsOrderRearrangement(source_code)
+        elif rule_id == "11":
+            return LoopIfContinue2Else(source_code)
+        elif rule_id == "12":
+            return VarDeclarationMerging(source_code)
+        elif rule_id == "13":
+            return VarDeclarationDividing(source_code)
+        elif rule_id == "14":
+            return SwitchEqualSides(source_code)
+        elif rule_id == "15":
+            return SwitchStringEqual(source_code)
+        elif rule_id == "16":
+            return PrePostFixExpressionDividing(source_code)
+        elif rule_id == "17":
+            return Case2IfElse(source_code)
+        elif rule_id == "-1":
+            return For2While_Wrongly(source_code)
+        elif rule_id == "-3":
+            return ReverseIfElse_Wrongly(source_code)
+        elif rule_id == "-10":
+            return StatementsOrderRearrangement_Wrongly(source_code)
+        elif rule_id == "-99":
+            return LocalVarRenaming_Wrongly(source_code)
         else:
             raise ValueError("No rule belongs to this id!")
 

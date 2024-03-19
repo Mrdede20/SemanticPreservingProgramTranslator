@@ -35,7 +35,7 @@ class MatchToIfElseTransformer(ast.NodeTransformer):
             return else_body
 
 
-def transform_match_to_if_else(source_code):
+def Case2IfElse(source_code):
     tree = ast.parse(source_code, mode='exec')
     transformer = MatchToIfElseTransformer()
     new_tree = transformer.visit(tree)
@@ -43,17 +43,17 @@ def transform_match_to_if_else(source_code):
     return astor.to_source(new_tree)
 
 
-# 测试代码
-test_code = """
-match x:
-    case 1:
-        print("One")
-    case 2:
-        print("Two")
-    case _:
-        print("Other")
-"""
-
-transformed_code = transform_match_to_if_else(test_code)
-print("原始代码:\n", test_code)
-print("转换后的代码:\n", transformed_code)
+# # 测试代码
+# test_code = """
+# match x:
+#     case 1:
+#         print("One")
+#     case 2:
+#         print("Two")
+#     case _:
+#         print("Other")
+# """
+#
+# transformed_code = Case2IfElse(test_code)
+# print("原始代码:\n", test_code)
+# print("转换后的代码:\n", transformed_code)

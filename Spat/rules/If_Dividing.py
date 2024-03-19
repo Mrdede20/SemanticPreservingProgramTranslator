@@ -18,19 +18,19 @@ class IfDividingTransformer(ast.NodeTransformer):
         return node
 
 
-def transform_if_dividing(source_code):
+def IfDividing(source_code):
     tree = ast.parse(source_code)
     transformer = IfDividingTransformer()
     transformed_tree = transformer.visit(tree)
     return ast.unparse(transformed_tree)
 
 
-# 测试代码
-test_code = """
-if a and b:
-    print("Both a and b are True")
-"""
-
-transformed_code = transform_if_dividing(test_code)
-print("原始代码:\n", test_code)
-print("转换后的代码:\n", transformed_code)
+# # 测试代码
+# test_code = """
+# if a and b:
+#     print("Both a and b are True")
+# """
+#
+# transformed_code = IfDividing(test_code)
+# print("原始代码:\n", test_code)
+# print("转换后的代码:\n", transformed_code)

@@ -22,21 +22,21 @@ class AddAssignmentToEqualAssignmentTransformer(ast.NodeTransformer):
         return node
 
 
-def transform_add_assignment_to_equal_assignment(source_code):
+def AddAssignment2EqualAssignment(source_code):
     tree = ast.parse(source_code)
     transformer = AddAssignmentToEqualAssignmentTransformer()
     transformed_tree = transformer.visit(tree)
     return ast.unparse(transformed_tree)
 
 
-# 测试代码
-test_code = """
-x += 1
-y -= 2
-z *= 3
-w /= 4
-"""
-
-transformed_code = transform_add_assignment_to_equal_assignment(test_code)
-print("原始代码:\n", test_code)
-print("转换后的代码:\n", transformed_code)
+# # 测试代码
+# test_code = """
+# x += 1
+# y -= 2
+# z *= 3
+# w /= 4
+# """
+#
+# transformed_code = AddAssignment2EqualAssignment(test_code)
+# print("原始代码:\n", test_code)
+# print("转换后的代码:\n", transformed_code)

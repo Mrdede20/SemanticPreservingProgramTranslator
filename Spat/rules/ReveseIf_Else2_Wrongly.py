@@ -14,21 +14,21 @@ class ReverseIfElseTransformer(ast.NodeTransformer):
         return node
 
 
-def transform_code_with_reversed_if_else(source_code):
+def ReverseIfElse_Wrongly(source_code):
     tree = ast.parse(source_code)
     transformer = ReverseIfElseTransformer()
     transformed_tree = transformer.visit(tree)
     return ast.unparse(transformed_tree)
 
 
-# 测试代码
-test_code = """
-if condition:
-    print("Condition is true")
-else:
-    print("Condition is false")
-"""
-
-transformed_code = transform_code_with_reversed_if_else(test_code)
-print("原始代码:\n", test_code)
-print("转换后的代码:\n", transformed_code)
+# # 测试代码
+# test_code = """
+# if condition:
+#     print("Condition is true")
+# else:
+#     print("Condition is false")
+# """
+#
+# transformed_code = ReverseIfElse_Wrongly(test_code)
+# print("原始代码:\n", test_code)
+# print("转换后的代码:\n", transformed_code)

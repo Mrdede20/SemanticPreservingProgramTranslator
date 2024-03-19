@@ -22,22 +22,22 @@ class StatementsOrderRearrangementTransformer(ast.NodeTransformer):
             i += 2
 
 
-def transform_statements_order_rearrangement(source_code):
+def StatementsOrderRearrangement_Wrongly(source_code):
     tree = ast.parse(source_code)
     transformer = StatementsOrderRearrangementTransformer()
     transformed_tree = transformer.visit(tree)
     return ast.unparse(transformed_tree)
 
 
-# 测试代码
-test_code = """
-def example():
-    a = 1
-    print(a)
-    b = 2
-    print(b)
-"""
-
-transformed_code = transform_statements_order_rearrangement(test_code)
-print("原始代码:\n", test_code)
-print("转换后的代码:\n", transformed_code)
+# # 测试代码
+# test_code = """
+# def example():
+#     a = 1
+#     print(a)
+#     b = 2
+#     print(b)
+# """
+#
+# transformed_code = StatementsOrderRearrangement_Wrongly(test_code)
+# print("原始代码:\n", test_code)
+# print("转换后的代码:\n", transformed_code)

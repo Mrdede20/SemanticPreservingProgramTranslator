@@ -30,21 +30,21 @@ class WhileToForTransformer(ast.NodeTransformer):
         return ast.copy_location(new_for_loop, node)
 
 
-def transform_while_to_for(source_code):
+def While2For(source_code):
     tree = ast.parse(source_code)
     transformer = WhileToForTransformer()
     new_tree = transformer.visit(tree)
     return astor.to_source(new_tree)
 
 
-# 测试代码
-test_code = """
-i=0
-while i<5:
-    print("This will print once.")
-    i = i+1
-"""
-
-transformed_code = transform_while_to_for(test_code)
-print("原始代码:\n", test_code)
-print("转换后的代码:\n", transformed_code)
+# # 测试代码
+# test_code = """
+# i=0
+# while i<5:
+#     print("This will print once.")
+#     i = i+1
+# """
+#
+# transformed_code = While2For(test_code)
+# print("原始代码:\n", test_code)
+# print("转换后的代码:\n", transformed_code)

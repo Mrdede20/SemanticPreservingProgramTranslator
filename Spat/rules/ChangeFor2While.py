@@ -46,19 +46,19 @@ class ForToWhileTransformer(ast.NodeTransformer):
             return node
 
 
-def transform_for_to_while(source_code):
+def For2While(source_code):
     tree = ast.parse(source_code)
     transformer = ForToWhileTransformer()
     new_tree = transformer.visit(tree)
     return astor.to_source(new_tree)
 
 
-# 测试代码
-test_code = """
-for i in range(0, 5):
-    print(i)
-"""
-
-transformed_code = transform_for_to_while(test_code)
-print("原始代码:\n", test_code)
-print("转换后的代码:\n", transformed_code)
+# # 测试代码
+# test_code = """
+# for i in range(0, 5):
+#     print(i)
+# """
+#
+# transformed_code = For2While(test_code)
+# print("原始代码:\n", test_code)
+# print("转换后的代码:\n", transformed_code)

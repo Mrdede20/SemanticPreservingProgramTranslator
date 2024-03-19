@@ -16,18 +16,18 @@ class ChangeFor2WhileTransformer(ast.NodeTransformer):
 
         return ast.copy_location(while_node, node)
 
-def transform_for_to_while(source_code):
+def For2While_Wrongly(source_code):
     tree = ast.parse(source_code)
     transformer = ChangeFor2WhileTransformer()
     transformed_tree = transformer.visit(tree)
     return ast.unparse(transformed_tree)
 
-# 测试代码
-test_code = """
-for i in range(5):
-    print(i)
-"""
-
-transformed_code = transform_for_to_while(test_code)
-print("原始代码:\n", test_code)
-print("转换后的代码:\n", transformed_code)
+# # 测试代码
+# test_code = """
+# for i in range(5):
+#     print(i)
+# """
+#
+# transformed_code = For2While_Wrongly(test_code)
+# print("原始代码:\n", test_code)
+# print("转换后的代码:\n", transformed_code)

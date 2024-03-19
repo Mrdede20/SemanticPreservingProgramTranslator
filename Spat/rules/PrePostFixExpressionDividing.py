@@ -23,20 +23,20 @@ class IncrementDecrementTransformer(ast.NodeTransformer):
             )
         return node
 
-def transform_increment_decrement(source_code):
+def PrePostFixExpressionDividing(source_code):
     tree = ast.parse(source_code)
     transformer = IncrementDecrementTransformer()
     transformed_tree = transformer.visit(tree)
     return ast.unparse(transformed_tree)
 
-# 测试代码
-test_code = """
-i = 0
-i += 1
-j = 0
-j -= 1
-"""
-
-transformed_code = transform_increment_decrement(test_code)
-print("原始代码:\n", test_code)
-print("转换后的代码:\n", transformed_code)
+# # 测试代码
+# test_code = """
+# i = 0
+# i += 1
+# j = 0
+# j -= 1
+# """
+#
+# transformed_code = PrePostFixExpressionDividing(test_code)
+# print("原始代码:\n", test_code)
+# print("转换后的代码:\n", transformed_code)

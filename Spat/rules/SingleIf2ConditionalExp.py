@@ -17,21 +17,21 @@ class SingleIfToConditionalExpTransformer(ast.NodeTransformer):
         return node
 
 
-def transform_code_with_conditional_exp(source_code):
+def SingleIF2ConditionalExp(source_code):
     tree = ast.parse(source_code)
     transformer = SingleIfToConditionalExpTransformer()
     transformed_tree = transformer.visit(tree)
     return ast.unparse(transformed_tree)
 
 
-# 测试代码
-test_code = """
-if condition:
-    x = 1
-else:
-    x = 2
-"""
-
-transformed_code = transform_code_with_conditional_exp(test_code)
-print("原始代码:\n", test_code)
-print("转换后的代码:\n", transformed_code)
+# # 测试代码
+# test_code = """
+# if condition:
+#     x = 1
+# else:
+#     x = 2
+# """
+#
+# transformed_code = SingleIF2ConditionalExp(test_code)
+# print("原始代码:\n", test_code)
+# print("转换后的代码:\n", transformed_code)

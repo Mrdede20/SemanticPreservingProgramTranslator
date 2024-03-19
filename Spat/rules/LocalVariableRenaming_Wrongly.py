@@ -29,20 +29,20 @@ class LocalVariableRenamingTransformer_Wrongly(ast.NodeTransformer):
         # 生成一个长度为length的随机字符串
         return ''.join(random.choices(string.ascii_lowercase, k=length))
 
-def transform_code_with_renaming(source_code):
+def LocalVarRenaming_Wrongly(source_code):
     tree = ast.parse(source_code)
     transformer = LocalVariableRenamingTransformer_Wrongly()
     transformed_tree = transformer.visit(tree)
     new_code = ast.unparse(transformed_tree)
     return new_code
 
-# 测试代码
-test_code = """
-x = 1
-y = x + 2
-print(x, y)
-"""
-
-transformed_code = transform_code_with_renaming(test_code)
-print("原始代码:\n", test_code)
-print("转换后的代码:\n", transformed_code)
+# # 测试代码
+# test_code = """
+# x = 1
+# y = x + 2
+# print(x, y)
+# """
+#
+# transformed_code = LocalVarRenaming_Wrongly(test_code)
+# print("原始代码:\n", test_code)
+# print("转换后的代码:\n", transformed_code)
